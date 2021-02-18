@@ -347,6 +347,12 @@ h2 {
 h3 {
   font-size: 3rem; }
 
+.bg-verde {
+  background-color: #4cb8b3; }
+
+.bg-amarillo {
+  background-color: #fef46d; }
+
 .header {
   background-color: #4cb8b3; }
   .header .contenido-header {
@@ -431,3 +437,24 @@ h3 {
     font-weight: 700; }
   .contenido-festival .texto {
     line-height: 1.5; }
+
+.lineup {
+  background-color: #f53756;
+  padding: 5rem 0; }
+  .lineup h3, .lineup p {
+    text-align: center;
+    color: #fff; }
+  .lineup .dia {
+    text-transform: uppercase;
+    margin: 5rem 0; }
+
+@media (min-width: 768px) {
+  .escenarios_contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem; } }
+
+.escenarios_contenedor .nombre_escenario {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 300; }
