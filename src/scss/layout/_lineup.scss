@@ -17,9 +17,58 @@
         @include grid(2, $separacion);
     }
 
+    .escenario {
+        padding-top: $separacion / 2;
+    }
+
     .nombre_escenario {
         color: $negro;
         font-size: 2rem;
         font-weight: $light;
+
+        &:after {
+            content: '';
+            width: 20rem;
+            height: 20rem;
+            display: block;
+            margin: 2rem auto 0 auto;
+            background-size: 15rem; // Cambia el tamaño del icno
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     }
+
+}
+
+.edm .nombre_escenario {
+    &:after {
+        background-image: url(../img/icono_edm.png);
+    }
+}
+
+.rock .nombre_escenario {
+    &:after {
+        background-image: url(../img/icono_rock.png);
+    }
+}
+
+.calendario {
+    padding: 0;
+    list-style: none;
+    li {
+        padding: $separacion / 2;
+        font-weight: $bold;
+        span { // el span se ve afectado x los estilos del padre, hay q personalizarlo
+            font-weight: $regular;
+        }
+    }
+}
+
+//.calendario li:nth-child(2n+1)  //2(0) + 1 = 1: Aplica elem al primer elem, luego 2(1) +1 = 3 y asi
+.bg-verde .calendario li:nth-child(odd) {  // Esto es lo mismo q arriba
+    background-color: darken($verde, 10); // Darken es un estilo de color negro solo de sass
+}
+
+.bg-amarillo .calendario li:nth-child(odd) {  
+    background-color: darken($amarillo, 10); 
 }

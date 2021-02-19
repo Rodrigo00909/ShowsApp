@@ -3,10 +3,12 @@ const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
 const notify = require('gulp-notify');
 const webp = require('gulp-webp');
+const concat = require('gulp-concat');
 
 const paths = {
     imagenes: 'src/img/**/**',
-    scss: 'src/scss/**/*.scss'
+    scss: 'src/scss/**/*.scss',
+    js: 'src/js/**/*.js'
 }
 
 function css() {
@@ -21,6 +23,13 @@ function minificarcss() {
             outputStyle: 'compressed'
         }))
         .pipe(dest('./build/css'));
+}
+
+function javascript() { // Gulp-concat es para tener archivos con _ como en sass
+    // Cada archivo nuevo q tenga de js, seprados x funcionalidad se compilan en bundle.js
+    return src(paths.js)
+        .pipe(concat('bundle.js'))
+        .pipe(dest('./build/js'))
 }
 
 function minificarimagenes() {
@@ -39,10 +48,11 @@ function versionwebp() {
 
 function watchArchivos() {
     watch(paths.scss, css)
+    watch(paths.js, javascript)
 }
 
 exports.css = css;
 exports.minificarcss = minificarcss;
 exports.minificarimagenes = minificarimagenes;
 exports.watchArchivos = watchArchivos;
-exports.default = series(css, minificarimagenes, versionwebp, watchArchivos); // Ejecuta funcion css e minificarimagenes(SERIES)
+exports.default = series(css, javascript, minificarimagenes, versionwebp, watchArchivos); // Ejecuta funcion css e minificarimagenes(SERIES)
