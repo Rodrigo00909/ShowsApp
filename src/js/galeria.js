@@ -19,6 +19,8 @@ function crearGaleria() {
         lista.appendChild(imagen);
         // Agregar LI a galeria
         galeria.appendChild(lista);
+
+        imagen.classList.add('galeria_imagen');
     }
 }
 
